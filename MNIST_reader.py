@@ -11,13 +11,14 @@ which is GPL licensed.
 def read(dataset = "training", path = "."):
 
     if dataset is "training":
-        fname_img = os.path.join(path, 'train-images-idx3-ubyte')
-        fname_lbl = os.path.join(path, 'train-labels-idx1-ubyte')
+        fname_img = os.path.join(path, 'mnist_train_images.gz')
+        fname_lbl = os.path.join(path, 'mnist_train_labels.gz')
     elif dataset is "testing":
-        fname_img = os.path.join(path, 't10k-images-idx3-ubyte')
-        fname_lbl = os.path.join(path, 't10k-labels-idx1-ubyte')
+        fname_img = os.path.join(path, 'mnist_test_images.gz')
+        fname_lbl = os.path.join(path, 'mnist_test_labels.gz')
     else:
-        raise ValueError, "dataset must be 'testing' or 'training'"
+        raise ValueError("dataset must be 'testing' or 'training'")
+
 
     print(fname_lbl)
 
@@ -40,8 +41,8 @@ def read(dataset = "training", path = "."):
 
 def get_data(d):
     # load the data
-    x_train, y_train = read('training', d + '/MNIST_original')
-    x_test, y_test = read('testing', d + '/MNIST_original')
+    x_train, y_train = read('training', 'machine-learning-diff-private-federated-learning/DiffPrivate_FedLearning/MNIST_original/')
+    x_test, y_test = read('testing', 'machine-learning-diff-private-federated-learning/DiffPrivate_FedLearning/MNIST_original/')
 
     # create validation set
     x_vali = list(x_train[50000:].astype(float))
